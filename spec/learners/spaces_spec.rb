@@ -15,13 +15,13 @@ describe Learners::Spaces do
     l
   end
 
-  describe '.learn' do
-    context 'it succeeds at the problem' do
+  describe '.analyze' do
+    context 'knows' do
      it 'that a single space equal humans' do
        expect(learner.analyze("Bob Chunky")).to eq(1.0)
      end
 
-     it 'that any number of spaces equals to a human' do
+     it 'that many number of spaces equals to a human' do
        expect(learner.analyze("Bob Chunky Greenwalsh Blue Memories")).to eq(1.0)
      end
 
@@ -29,13 +29,13 @@ describe Learners::Spaces do
        expect(learner.analyze('xkc3po')).to eq(0.0)
      end
 
-     xit 'learns that any number of spaces if often a lie and a non human' do
+     xit 'that any number of spaces if often a lie and a non human' do
        expect(learner.analyze("Bob Chunk Greenwalsh Blue Memories")).to lt(1.0)
      end
     end
 
-    context 'it fails at the problem' do
-      it 'misses that a persons name can be without spaces' do
+    context 'does not know' do
+      it 'that a persons name can be without spaces' do
        expect(learner.analyze("Anne")).to eq(0.0)
       end
     end
