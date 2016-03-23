@@ -5,7 +5,9 @@ a human'
     def initialize(size, data)
       @ngram_terms = {}
       @size = size
-      #ngra(data)
+      data.each do |d|
+        ngram(d)
+      end
     end
 
     @doc = "data is {name: String, score: 'Number'}"
