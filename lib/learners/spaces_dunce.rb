@@ -15,11 +15,6 @@ correlate the exact number of spaces in a name with the score'
         score = d[1]
         spaces = operation(name)
         @minimum_space_count = recalibrate(spaces, score)
-
-        #TODO: this direct attempt at correlating the number of spaces and
-        # the reality of a name should be trained by a better datasource
-        # to be useful
-        #@knowledge[spaces] = score
       end
     end
 
@@ -30,7 +25,6 @@ correlate the exact number of spaces in a name with the score'
       else
         0.0
       end
-      #@knowledge[spaces]
     end
 
     def operation(value)
@@ -38,14 +32,15 @@ correlate the exact number of spaces in a name with the score'
     end
 
     def recalibrate(space_count, score)
-      if space_count < @minimum_space_count && scores(score)
+      if space_count < @minimum_space_count && scores?(score)
         space_count
       else
         @minimum_space_count
       end
     end
 
-    def scores(score)
+    @doc = "does the score for a record pass the threshold?"
+    def scores?(score)
       return score > 0.5
     end
   end

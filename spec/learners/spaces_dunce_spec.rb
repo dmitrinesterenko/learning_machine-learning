@@ -43,11 +43,11 @@ describe Learners::SpacesDunce do
 
   describe '.scores?' do
     it 'scores true when the score is more than 0.5' do
-      expect(learner.scores(0.6)).to be true
+      expect(learner.scores?(0.6)).to be true
     end
 
     it 'scores false when the score is less than or equal to 0.5' do
-      expect(learner.scores(0.5)).to be false
+      expect(learner.scores?(0.5)).to be false
     end
   end
 
