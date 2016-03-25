@@ -4,9 +4,7 @@ describe Learners::Spaces do
   let(:trainer) do
     #TODO: this pattern stinks can you change this so that
     # the initialize and populate and return are all one operation?
-    t = C::Trainer.new
-    t.train(DataSets::Humans.data)
-    t
+    C::Trainer.new DataSets::Humans.data
   end
 
   subject(:learner) do

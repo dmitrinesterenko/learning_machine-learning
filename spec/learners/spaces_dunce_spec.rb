@@ -4,9 +4,7 @@ describe Learners::SpacesDunce do
   let(:trainer) do
     #TODO: this pattern stinks can you change this so that
     # the initialize and populate and return are all one operation?
-    t = C::Trainer.new
-    t.train(DataSets::Humans.data)
-    t
+    C::Trainer.new DataSets::Humans.data
   end
 
   subject(:learner) do
@@ -40,6 +38,16 @@ describe Learners::SpacesDunce do
        expect(learner.analyze("Bob Chunk Greenwalsh Blue Memories")).to be 1.0
        end
 
+    end
+  end
+
+  describe '.scores?' do
+    it 'scores true when the score is more than 0.5' do
+      expect(learner.scores?(0.6)).to be true
+    end
+
+    it 'scores false when the score is less than or equal to 0.5' do
+      expect(learner.scores?(0.5)).to be false
     end
   end
 
