@@ -1,4 +1,4 @@
-require_relative 'spec_helper'
+require_relative '../spec_helper'
 describe C::Sample do
   let(:sample) { C::Sample.new }
 

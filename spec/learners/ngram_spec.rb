@@ -2,7 +2,7 @@ require_relative '../spec_helper'
 
 describe Learners::Ngram do
   let(:trainer) do
-    C::Trainer.new DataSets::Humans.data
+    C::Trainer.new DataSets::Names.data
   end
 
   #TODO: mystery guest

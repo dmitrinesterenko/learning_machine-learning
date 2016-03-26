@@ -1,14 +1,14 @@
 require_relative '../spec_helper'
 
-describe Learners::None do
+describe Learners::Dunce do
   let(:trainer) do
     t = C::Trainer.new
-    t.train(DataSets::Humans.data)
+    t.train(DataSets::Names.data)
     t
   end
 
   subject(:learner) do
-    Learners::None.new
+    Learners::Dunce.new
   end
 
   describe '.learn' do
