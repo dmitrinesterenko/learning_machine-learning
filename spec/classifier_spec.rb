@@ -13,7 +13,7 @@ describe C::Classifier do
   end
 
   let(:trainer) do
-    C::Trainer.new DataSets::Humans.new
+    C::Trainer.new DataSets::Names.new
   end
 
   let(:classifier) do

@@ -1,6 +1,6 @@
-require_relative 'spec_helper'
+require_relative '../spec_helper'
 describe C::IO do
-  let(:file) { 'test_file.csv'}
+  let(:file) { '/tmp/test_file.csv'}
   let(:data) { ['0.5', '0.6', '0.99'] }
   let(:output) { C::IO.new }
 
