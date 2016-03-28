@@ -1,21 +1,21 @@
 class Classification::Classifier
+  attr_accessor :trainer, :learner
 
-  @output = {}
-
-  def initialize(input)
+  def initialize(learner, trainer)
+    @trainer = trainer
+    @learner = learner
   end
 
   def classify(input)
-    input.each_with_index do |i|
-      @output[i]['score'] = spaces(i) + all_letters(i)
-    end
+    @learner.analyze(input)
   end
 
-  def spaces(input)
-    input.split(' ').length
+  def ask
+    "What do you think?"
   end
 
-  def all_letters(input)
-    /[a-zA-Z]/.match(input.gsub(' ', ''))
+  def rescore(input, score)
+    @trainer.train({input => score})
+    @learner.learn(@trainer.data)
   end
 end

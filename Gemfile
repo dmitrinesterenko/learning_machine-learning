@@ -5,4 +5,5 @@ group :development, :test do
    gem 'guard-rspec'
    gem 'rspec'
    gem 'pry'
+   gem 'pry-nav'
 end

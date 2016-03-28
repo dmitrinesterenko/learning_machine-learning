@@ -5,6 +5,12 @@ a human'
     def initialize(size, data)
       @ngram_terms = {}
       @size = size
+      learn(data)
+    end
+
+    @doc = "learn using the data. TODO: this can be a part of a base learner
+class"
+    def learn(data)
       data.each do |d|
         ngram(d)
       end
