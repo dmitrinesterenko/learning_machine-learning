@@ -53,8 +53,8 @@ describe C::Classifier do
       end
 
       it "applies the new score to the trainer" do
-        expect(classifier.rescore(input, 1.0)).to include({name: input, score:
-1.0})
+        expect(classifier.rescore(input, 1.0)).to include(name: input, score:
+1.0)
       end
 
       it "relearns from the new training data" do
