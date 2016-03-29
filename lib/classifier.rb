@@ -15,7 +15,7 @@ class Classification::Classifier
   end
 
   def rescore(input, score)
-    @trainer.train( input => score)
+    @trainer.train(input => score)
     @learner.learn(@trainer.data)
   end
 end
