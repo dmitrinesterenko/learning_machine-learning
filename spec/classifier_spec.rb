@@ -33,12 +33,13 @@ describe C::Classifier do
     end
   end
 
+  let(:input) { "Mandy Moore" }
+
   describe ".classify" do
     context "when there is input" do
-      let(:input) { "Mandy Moore" }
 
       it "accepts it" do
-        allow(classifier).to receive(:classify) { input }
+        classifier.should_receive(:classify).with(input).and_return(0.5)
         classifier.classify(input)
       end
 
@@ -46,12 +47,11 @@ describe C::Classifier do
         expect(classifier.classify(input).class).to be Float
         expect(classifier.classify(input)).to be < 1.0
       end
+    end
+  end
 
-      it "asks for a rescore" do
-        expect(classifier).to receive(:ask).and_return("What do you think?")
-        classifier.ask
-      end
-
+  describe ".rescore" do
+    context "when rescoring" do
       it "applies the new score to the trainer" do
         expect(classifier.rescore(input, 1.0)).to include(name: input, score:
 1.0)
@@ -60,6 +60,11 @@ describe C::Classifier do
       it "relearns from the new training data" do
         classifier.rescore(input, 1.0)
         expect(classifier.classify(input)).to eq 1.0
+      end
+
+      it "only rescores when a numeric value is provided" do
+        classifier.rescore(input, "1.0")
+        expect(classifier.classify(input)).to eq 0.0
       end
     end
   end
