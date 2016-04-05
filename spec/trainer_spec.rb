@@ -47,7 +47,6 @@ describe C::Trainer do
       prior_count = trainer.data.count
       trainer.train(buzz_aldrin)
       expect(trainer.data.count).to eq prior_count
-
     end
   end
 end

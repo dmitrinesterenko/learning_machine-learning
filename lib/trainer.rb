@@ -1,7 +1,7 @@
 class Classification::Trainer
   doc "Store the training data"
   def initialize(sample={})
-    @sample = @sample || {}
+    @sample ||= {}
     train(sample)
   end
 
@@ -27,11 +27,11 @@ class Classification::Trainer
 
   doc "Get structured data that contains a name and a score as key value pairs
 for each of the entries"
-  #TODO: fix this ugly code
+  # TODO: fix this ugly code
   def data
     data = []
     @sample.each do |h|
-        data << {name: h[0].to_s, score: h[1]}
+      data << { name: h[0].to_s, score: h[1] }
     end
     data
   end

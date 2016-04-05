@@ -33,7 +33,6 @@ describe C::Classifier do
     end
   end
 
-
   let(:input) { "Mandy Moore" }
 
   describe ".classify" do
