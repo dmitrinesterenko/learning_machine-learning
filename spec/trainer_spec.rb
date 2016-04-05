@@ -20,7 +20,7 @@ describe C::Trainer do
   end
 
   subject(:trainer) do
-    C::Trainer.new
+    C::Trainer.new humans
   end
 
   describe ".train" do
@@ -30,13 +30,24 @@ describe C::Trainer do
 
     it "adds new humans" do
       trainer.train(humans)
+      prior_count = trainer.all.count
       trainer.train(new_record)
       expect(trainer.all).to eq(humans.merge(new_record))
+      expect(trainer.all.count).to eq prior_count + 1
     end
 
     it "adjusts with feedback" do
-      expect(trainer.train(buzz_aldrin)).to match(buzz_aldrin)
+      trainer.train(humans)
+      expect(trainer.train(buzz_aldrin)).to include(buzz_aldrin)
       expect(trainer.get("Buzzy")).to eq(1.0)
+    end
+
+    it "updates existing values" do
+      trainer.train(humans)
+      prior_count = trainer.data.count
+      trainer.train(buzz_aldrin)
+      expect(trainer.data.count).to eq prior_count
+
     end
   end
 end

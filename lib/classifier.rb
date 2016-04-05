@@ -10,10 +10,6 @@ class Classification::Classifier
     @learner.analyze(input)
   end
 
- # def ask
- #   "What do you think?"
- # end
-
   def rescore(input, score)
     @trainer.train(input => score)
     @learner.learn(@trainer.data)
