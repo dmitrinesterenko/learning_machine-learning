@@ -2,14 +2,15 @@ module Learners
   @classdoc = 'This class uses the number of spaces to establish if a name
 belongs to human'
   class SpacesDunce
-    def initialize
-        @minimum_space_count = Float::INFINITY
+    def initialize(data)
+      @minimum_space_count = Float::INFINITY
+      @data = data
     end
 
     @doc = 'Learn uses the count of spaces. Other versions of .learn could
 correlate the exact number of spaces in a name with the score'
-    def learn(data)
-      data.each do |d|
+    def learn
+      @data.each do |d|
         #TODO: remove mystery guests
         name = d[0]
         score = d[1]

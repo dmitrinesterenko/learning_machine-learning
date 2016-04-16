@@ -8,12 +8,12 @@ describe Learners::Dunce do
   end
 
   subject(:learner) do
-    Learners::Dunce.new
+    Learners::Dunce.new trainer.all
   end
 
   describe '.learn' do
     it 'learns nothing from the training' do
-      learner.learn(trainer.all)
+      learner.learn
       expect(learner.analyze("Bob Hope")).to eq(0.0)
     end
   end

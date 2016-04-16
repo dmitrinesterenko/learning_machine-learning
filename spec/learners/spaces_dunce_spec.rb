@@ -8,8 +8,8 @@ describe Learners::SpacesDunce do
   end
 
   subject(:learner) do
-    l =  Learners::SpacesDunce.new
-    l.learn(trainer.all)
+    l =  Learners::SpacesDunce.new trainer.all
+    l.learn
     l
   end
 
