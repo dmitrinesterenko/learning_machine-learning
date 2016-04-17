@@ -53,7 +53,7 @@ class"
         begin
           total_score += @ngram_terms[npiece]
         rescue TypeError
-          puts "Should we penalize ngrams that don't have a match?"
+          #puts "Should we penalize ngrams that don't have a match?"
         end
       end
       total_score / ngram.length
