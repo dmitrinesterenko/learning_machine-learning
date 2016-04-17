@@ -7,6 +7,8 @@ Running an NGram learner with the dataset of names use the following command.
   ruby run.rb --learner=ngram --dataset=names
 ```
 
+![running](assets/ngram.gif)
+
 # obviously data
 machine learning heavily depends on the data that you provide.
 
