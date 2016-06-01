@@ -1,6 +1,48 @@
 require_relative '../spec_helper'
 
 describe Classification::CLI do
+  let(:trainer_class) do
+    Classification::Trainer
+  end
+
+  describe '.new' do
+    context 'ngram' do
+      let(:ngram_input) do
+        {learner: 'ngram', length: 2,  dataset: 'names'}
+      end
+
+      let(:subject) do
+        described_class.new ngram_input
+      end
+
+      context 'classifier' do
+        it 'has a dataset' do
+          expect(subject.classifier.trainer.class).to eq(Classification::Trainer)
+        end
+
+        it 'has a learner' do
+          expect(subject.classifier.learner.class).to eq(Learners::Ngram)
+        end
+      end
+    end
+
+    context 'dunce' do
+      let(:dunce_input) do
+        {learner: 'dunce', dataset: 'names'}
+      end
+
+      let(:subject) do
+        described_class.new dunce_input
+      end
+
+      context 'classifier' do
+        it 'has a trainer' do
+          expect(subject.classifier.trainer.class).to eq(trainer_class)
+        end
+      end
+    end
+  end
+
   ## these testing strategies for CLI are unusual  https://gist.github.com/joshcheek/5561023
 #
 ## TODO: none of these tests worked without having to alter the

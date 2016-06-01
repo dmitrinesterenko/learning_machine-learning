@@ -2,8 +2,10 @@ module Learners
   @classdoc = 'This class uses ngram analysis to establish if a name belongs to
 a human'
   class Ngram
-    def initialize(size, data)
+    def initialize(size=2, data)
       @ngram_terms = {}
+      # TODO: One of the most important things for an Ngram learner to understand
+      # is how many grams it wants to be. Start with 2
       @size = size
       learn(data)
     end
@@ -51,7 +53,7 @@ class"
         begin
           total_score += @ngram_terms[npiece]
         rescue TypeError
-          puts "Should we penalize ngrams that don't have a match?"
+          #puts "Should we penalize ngrams that don't have a match?"
         end
       end
       total_score / ngram.length
