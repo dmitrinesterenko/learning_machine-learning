@@ -26,8 +26,8 @@ class Classification::CLI
         write_score @classifier.classify(input)
         correct?
         new_score  = read
-        write_score @classifier.rescore(input,new_score.to_i)
-        write_score @classifier.classify(input)
+        write_data @classifier.rescore(input,new_score.to_i)
+        write_data @classifier.classify(input)
       rescue Interrupt
         @running = false
       end
@@ -48,10 +48,24 @@ class Classification::CLI
   end
 
   def write_score(score)
-    @output.puts "I got #{score}"
+    @output.puts "#{random_humanizer} human (#{score})" if score > 0.7
+    @output.puts "#{random_humanizer} bots. Stay away (#{score})" if score <= 0.7
+  end
+
+  def write_data(data)
+    @output.puts "#{data}"
   end
 
   def correct?
     @output.puts "What's your score?"
+  end
+
+  private
+  def humanizers
+    ["I think", "I reckon", "I see ", "I gather"]
+  end
+
+  def random_humanizer
+    humanizers[Random.rand(humanizers.length)]
   end
 end
