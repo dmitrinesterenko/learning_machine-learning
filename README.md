@@ -26,6 +26,10 @@ Running an NGram learner with the dataset of names use the following command.
 ```sh
   docker run --rm -it human_or_not:latest  # would drop you into running an NGram learner with a dataset of names
   ruby run.rb --learner=ngram --dataset=names
+  # or use a different data set
+  ruby run.rb --learner=ngram --dataset=guildies
+  # or use a different lolgarithm for learning
+  ruby run.rb --learner=spaces --dataset=guildies
 ```
 
 ![running](assets/ngram.gif)
