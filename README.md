@@ -15,10 +15,16 @@ new names
 All of the learners ask for more input and then attempt to adjust based on the
 score that you as a human feel those names deserve. Except for the dunce; that
 one learns nothing.
+# building
+Build this project image using Docker.
+```sh
+  docker build --tag human_or_not:latest .
+```
 
 # running
 Running an NGram learner with the dataset of names use the following command.
 ```sh
+  docker run --rm -it human_or_not:latest  # would drop you into running an NGram learner with a dataset of names
   ruby run.rb --learner=ngram --dataset=names
 ```
 
