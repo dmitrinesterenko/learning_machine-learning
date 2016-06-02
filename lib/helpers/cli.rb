@@ -23,6 +23,9 @@ class Classification::CLI
       begin
         name
         input = read
+        if (input == "DATABASE")
+          write_data @classifier.learner.learned_data
+        end
         write_score @classifier.classify(input)
         correct?
         new_score  = read

@@ -59,5 +59,9 @@ class"
       total_score / ngram.length
     end
 
+    def learned_data
+      @ngram_terms
+    end
+
   end
 end
