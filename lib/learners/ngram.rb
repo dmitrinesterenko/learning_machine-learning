@@ -62,6 +62,5 @@ class"
     def learned_data
       @ngram_terms
     end
-
   end
 end
